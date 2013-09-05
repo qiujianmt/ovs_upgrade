@@ -1,0 +1,48 @@
+diff -rupN openvswitch-1.9.0/datapath/linux/compat/include/linux/etherdevice.h openvswitch-1.9.0.mod/datapath/linux/compat/include/linux/etherdevice.h
+--- openvswitch-1.9.0/datapath/linux/compat/include/linux/etherdevice.h	2013-02-27 04:25:37.000000000 +0800
++++ openvswitch-1.9.0.mod/datapath/linux/compat/include/linux/etherdevice.h	2013-08-26 15:00:51.223989354 +0800
+@@ -5,7 +5,7 @@
+ #include_next <linux/etherdevice.h>
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,36)
+-static inline void eth_hw_addr_random(struct net_device *dev)
++static inline void eth_hw_addr_random2(struct net_device *dev)
+ {
+ 	random_ether_addr(dev->dev_addr);
+ }
+diff -rupN openvswitch-1.9.0/datapath/linux/compat/include/linux/if_vlan.h openvswitch-1.9.0.mod/datapath/linux/compat/include/linux/if_vlan.h
+--- openvswitch-1.9.0/datapath/linux/compat/include/linux/if_vlan.h	2013-02-27 04:25:37.000000000 +0800
++++ openvswitch-1.9.0.mod/datapath/linux/compat/include/linux/if_vlan.h	2013-08-26 15:00:51.223989354 +0800
+@@ -56,7 +56,7 @@ static inline struct sk_buff *__vlan_put
+ #endif
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,3,0)
+-static inline void vlan_set_encap_proto(struct sk_buff *skb, struct vlan_hdr *vhdr)
++static inline void vlan_set_encap_proto2(struct sk_buff *skb, struct vlan_hdr *vhdr)
+ {
+ 	__be16 proto;
+ 	unsigned char *rawp;
+diff -rupN openvswitch-1.9.0/datapath/linux/compat/include/linux/skbuff.h openvswitch-1.9.0.mod/datapath/linux/compat/include/linux/skbuff.h
+--- openvswitch-1.9.0/datapath/linux/compat/include/linux/skbuff.h	2013-02-27 04:25:37.000000000 +0800
++++ openvswitch-1.9.0.mod/datapath/linux/compat/include/linux/skbuff.h	2013-08-26 15:00:51.224989531 +0800
+@@ -246,7 +246,7 @@ static inline struct page *skb_frag_page
+ #endif
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,40)
+-static inline void skb_reset_mac_len(struct sk_buff *skb)
++static inline void skb_reset_mac_len2(struct sk_buff *skb)
+ {
+ 	skb->mac_len = skb->network_header - skb->mac_header;
+ }
+diff -rupN openvswitch-1.9.0/utilities/ovs-save openvswitch-1.9.0.mod/utilities/ovs-save
+--- openvswitch-1.9.0/utilities/ovs-save	2013-02-27 04:25:37.000000000 +0800
++++ openvswitch-1.9.0.mod/utilities/ovs-save	2013-08-26 15:01:22.750999331 +0800
+@@ -34,7 +34,7 @@ This script is meant as a helper for the
+ EOF
+ }
+ 
+-PATH=/sbin:/bin:/usr/sbin:/usr/bin
++PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+ 
+ missing_program () {
+     save_IFS=$IFS

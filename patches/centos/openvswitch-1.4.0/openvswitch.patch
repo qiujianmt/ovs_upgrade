@@ -1,0 +1,44 @@
+diff -rupN openvswitch-1.4.0/datapath/linux/compat/include/linux/if.h openvswitch-1.4.0.mod/datapath/linux/compat/include/linux/if.h
+--- openvswitch-1.4.0/datapath/linux/compat/include/linux/if.h	2012-01-31 15:08:18.000000000 +0800
++++ openvswitch-1.4.0.mod/datapath/linux/compat/include/linux/if.h	2013-08-26 12:06:41.204999394 +0800
+@@ -17,7 +17,7 @@
+ #if LINUX_VERSION_CODE == KERNEL_VERSION(2,6,36)
+ #define IFF_OVS_DATAPATH IFF_BRIDGE_PORT
+ #elif LINUX_VERSION_CODE < KERNEL_VERSION(2,6,36)
+-#define IFF_OVS_DATAPATH 0		/* no-op flag */
++#define IFF_OVS_DATAPATH2 0		/* no-op flag */
+ #endif
+ 
+ #endif
+diff -rupN openvswitch-1.4.0/datapath/linux/compat/include/linux/if_vlan.h openvswitch-1.4.0.mod/datapath/linux/compat/include/linux/if_vlan.h
+--- openvswitch-1.4.0/datapath/linux/compat/include/linux/if_vlan.h	2012-01-31 11:44:54.000000000 +0800
++++ openvswitch-1.4.0.mod/datapath/linux/compat/include/linux/if_vlan.h	2013-08-26 12:07:07.604003499 +0800
+@@ -56,7 +56,7 @@ static inline struct sk_buff *__vlan_put
+ 
+ /* This function is not exported from kernel. OVS Upstreaming patch will
+  * fix that. */
+-static inline void vlan_set_encap_proto(struct sk_buff *skb, struct vlan_hdr *vhdr)
++static inline void vlan_set_encap_proto2(struct sk_buff *skb, struct vlan_hdr *vhdr)
+ {
+ 	__be16 proto;
+ 	unsigned char *rawp;
+diff -rupN openvswitch-1.4.0/datapath/linux/compat/include/linux/skbuff.h openvswitch-1.4.0.mod/datapath/linux/compat/include/linux/skbuff.h
+--- openvswitch-1.4.0/datapath/linux/compat/include/linux/skbuff.h	2012-01-31 15:08:18.000000000 +0800
++++ openvswitch-1.4.0.mod/datapath/linux/compat/include/linux/skbuff.h	2013-08-26 12:06:12.167002898 +0800
+@@ -233,14 +233,14 @@ static inline bool skb_warn_if_lro(const
+ #endif
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,2,0)
+-static inline struct page *skb_frag_page(const skb_frag_t *frag)
++static inline struct page *skb_frag_page2(const skb_frag_t *frag)
+ {
+ 	return frag->page;
+ }
+ #endif
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,0,0)
+-static inline void skb_reset_mac_len(struct sk_buff *skb)
++static inline void skb_reset_mac_len2(struct sk_buff *skb)
+ {
+ 	skb->mac_len = skb->network_header - skb->mac_header;
+ }

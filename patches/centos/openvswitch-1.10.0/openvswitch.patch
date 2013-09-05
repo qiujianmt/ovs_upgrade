@@ -1,0 +1,11 @@
+--- openvswitch-1.10.0/utilities/ovs-save	2013-04-10 05:06:04.000000000 +0800
++++ openvswitch-1.10.0.mod/utilities/ovs-save	2013-08-26 15:20:27.979000105 +0800
+@@ -33,7 +33,7 @@ This script is meant as a helper for the
+ EOF
+ }
+ 
+-PATH=/sbin:/bin:/usr/sbin:/usr/bin
++PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+ 
+ missing_program () {
+     save_IFS=$IFS
