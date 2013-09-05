@@ -25,7 +25,6 @@
 #                    the Open vSwitch kernel-based switch.
 ### END INIT INFO
 
-echo $EUID
 if [[ $EUID -ne 0 ]]; then
     echo "Please run as root"
     exit 1

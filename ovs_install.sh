@@ -65,7 +65,7 @@ if test ! -f /usr/local/etc/openvswitch/conf.db; then
     if test -f /etc/openvswitch/conf.db; then
         sudo cp /etc/openvswitch/* /usr/local/etc/openvswitch
         if test "$RELEASE" == "ubuntu"; then
-            sudo apt-get -y remove --purage openvswitch-switch
+            sudo apt-get -y remove --purge openvswitch-switch
             sudo apt-get -y autoremove --purge
         fi
     else
