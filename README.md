@@ -28,3 +28,8 @@ Example
     ./ovs_install.sh 1.10.0
 
     sudo ./ovs_control force-reload-kmod
+
+Supported OS
+------------
+
+The scripts were tested on CentOS 6.4 and Ubuntu LTS 12.04.
