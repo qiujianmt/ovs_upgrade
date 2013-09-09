@@ -38,10 +38,6 @@ function get_mask {
     /sbin/ifconfig $IF | grep 'Mask:' | cut -d: -f4
 }
 
-function default_gw {
-    get_ip $1 | awk 'BEGIN{FS="."}{print $1 "." $2 "." $3 ".1"}'
-}
-
 if [[ -f /usr/local/bin/ovs-vsctl ]]; then
     echo "OVS installed in /usr/local"
     OVS_VSCTL=/usr/local/bin/ovs-vsctl
@@ -57,9 +53,8 @@ elif [[ -f /usr/bin/ovs-vsctl ]]; then
         IP=$(get_ip $br)
         if [[ $IP != 169.254.* ]]; then
             MASK=$(get_mask $br)
-            GW=$(default_gw $br)
             echo "sudo /sbin/ifconfig $br $IP netmask $MASK" >> .recover
-            echo "sudo route add default gw $GW" >> .recover
+            netstat -rn | grep $br | awk '{if ($2 != "0.0.0.0") print "sudo route add -net " $1 " netmask " $3 " gw " $2;}' >> .recover
         fi
     done
     ./ovs_install.sh $VERSION
