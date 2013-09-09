@@ -57,7 +57,7 @@ fi
 for kmod in $(find $MODULE_DIR -name "openvswitch*.ko")
 do
     echo $kmod
-    rm -f $kmod
+    sudo rm -f $kmod
 done
 MODULE_DEST=$MODULE_DIR/kernel/net/openvswitch
 sudo mkdir -p $MODULE_DEST
