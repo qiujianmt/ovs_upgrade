@@ -54,9 +54,13 @@ if test ! -f $KMOD_PATH; then
         exit 1
     fi
 fi
+for kmod in $(find $MODULE_DIR -name "openvswitch*.ko")
+do
+    echo $kmod
+    rm -f $kmod
+done
 MODULE_DEST=$MODULE_DIR/kernel/net/openvswitch
 sudo mkdir -p $MODULE_DEST
-sudo rm -fr $MODULE_DEST/*
 sudo cp $KMOD_PATH $MODULE_DEST
 sudo depmod -a
 
