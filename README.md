@@ -19,15 +19,25 @@ Usage
 
     Utility to download ovs source codes
 
+* upgrade.sh
+
+    Utility script to do installation and restarting services
+
+* chain_upgrade.sh
+
+    Utility to do upgrade.sh sequentially
 
 Example
 -------
 
+Execute download.sh to download all openvswitch source packages, or download them manually.
+
     sh download.sh
 
-    ./ovs_install.sh 1.10.0
+Upgrade from 1.4.6 to 1.11.0
 
-    sudo ./ovs_control force-reload-kmod
+    ./chain_upgrade.sh 1.4.6 1.7.3 1.9.0 1.10.0 1.11.0
+
 
 Supported OS
 ------------
