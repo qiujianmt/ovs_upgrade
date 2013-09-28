@@ -1,0 +1,12 @@
+diff -rupN openvswitch-1.9.3/utilities/ovs-save openvswitch-1.9.3.mod/utilities/ovs-save
+--- openvswitch-1.9.3/utilities/ovs-save	2013-09-05 07:02:58.000000000 +0800
++++ openvswitch-1.9.3.mod/utilities/ovs-save	2013-09-28 09:00:45.641000864 +0800
+@@ -34,7 +34,7 @@ This script is meant as a helper for the
+ EOF
+ }
+ 
+-PATH=/sbin:/bin:/usr/sbin:/usr/bin
++PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+ 
+ missing_program () {
+     save_IFS=$IFS
