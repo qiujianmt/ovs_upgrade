@@ -3,7 +3,7 @@
 VERSION=$1
 
 if [[ -z $VERSION ]]; then
-    echo "Usage: upgrade.sh version"
+    echo "Usage: upgrade.sh [version]"
     exit 1
 fi
 

@@ -1,5 +1,18 @@
+diff -rupN openvswitch-1.11.0/datapath/linux/compat/include/linux/netdevice.h openvswitch-1.11.0.mod/datapath/linux/compat/include/linux/netdevice.h
+--- openvswitch-1.11.0/datapath/linux/compat/include/linux/netdevice.h	2013-08-29 05:46:19.000000000 +0800
++++ openvswitch-1.11.0.mod/datapath/linux/compat/include/linux/netdevice.h	2014-05-13 18:04:01.211957371 +0800
+@@ -155,7 +155,7 @@ static inline int rpl_netif_needs_gso(st
+ #endif
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,3,0)
+-typedef u32 netdev_features_t;
++//typedef u32 netdev_features_t;
+ #endif
+ 
+ #ifndef HAVE___SKB_GSO_SEGMENT
+diff -rupN openvswitch-1.11.0/utilities/ovs-save openvswitch-1.11.0.mod/utilities/ovs-save
 --- openvswitch-1.11.0/utilities/ovs-save	2013-08-29 05:46:19.000000000 +0800
-+++ openvswitch-1.11.0.mod/utilities/ovs-save	2013-08-29 14:59:51.083000022 +0800
++++ openvswitch-1.11.0.mod/utilities/ovs-save	2014-05-13 18:05:41.014057264 +0800
 @@ -33,7 +33,7 @@ This script is meant as a helper for the
  EOF
  }
