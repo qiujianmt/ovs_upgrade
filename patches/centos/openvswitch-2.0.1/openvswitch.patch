@@ -1,0 +1,11 @@
+--- openvswitch-2.0.1/datapath/linux/compat/include/linux/netdevice.h	2014-03-02 01:51:00.000000000 +0800
++++ openvswitch-2.0.1.mod/datapath/linux/compat/include/linux/netdevice.h	2014-06-28 06:25:12.888999998 +0800
+@@ -89,7 +89,7 @@ static inline int rpl_netif_needs_gso(st
+ #endif
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,3,0)
+-typedef u32 netdev_features_t;
++//typedef u32 netdev_features_t;
+ #endif
+ 
+ #ifndef HAVE___SKB_GSO_SEGMENT
